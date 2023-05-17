@@ -1,18 +1,9 @@
-import { useState } from "react";
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
+import { MenuDropdownHeadless, MenuDropdown } from './drop-down'
 
-import "./App.css";
-import { MenuDropdownHeadless } from './drop-down';
+const menuDropdownHeadlessPath = '/MenuDropdownHeadless'
+const menuDropdown = '/MenuDropdown'
 
-const menuDropdownHeadlessPath = "/MenuDropdownHeadless";
-
-function Index() {
-  return (
-    <div>
-      <Link to={`contacts/1`}>Your Name</Link>
-    </div>
-  )
-}
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +12,7 @@ function App() {
       element: (
         <div>
           <Link to={menuDropdownHeadlessPath}>{menuDropdownHeadlessPath}</Link>
+          <Link to={menuDropdown}>{menuDropdown}</Link>
         </div>
       )
     },
@@ -32,7 +24,16 @@ function App() {
           items={[ { name: 'Vue' },{ name: 'Svelte' }, { name: 'React' }, { name: 'Angular' } ]}
         />
       ),
-    }
+    },
+    {
+      path: menuDropdown, // "/MenuDropdown"
+      element: (
+        <MenuDropdown
+          onSelect={() => { }}
+          items={[ { name: 'Vue' },{ name: 'Svelte' }, { name: 'React' }, { name: 'Angular' } ]}
+        />
+      ),
+    },
   ]);
 
   return (
