@@ -10,7 +10,6 @@ interface MenuDropdownProps {
   onSelect: (item: Item) => void
 }
 
-
 export default function MenuDropdown(props: MenuDropdownProps) {
   return (
     <div>

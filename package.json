@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "cypress": "pnpx cypress open"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",

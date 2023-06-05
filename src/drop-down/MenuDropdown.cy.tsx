@@ -2,6 +2,10 @@ import MenuDropdown from './MenuDropdown'
 import '../index.css'
 
 describe('<MenuDropdown />', () => {
+  before(() => {
+    cy.viewport('iphone-4')
+  })
+
   const items = [
     { name: 'Vue' },
     { name: 'Svelte' },
