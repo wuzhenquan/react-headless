@@ -1,63 +1,50 @@
 import Tabs from './Tabs'
 import '../index.css'
 
-describe('<Tabs />', () => {
-  const tabs = [
-    { name: 'Vue' },
-    { name: 'Svelte' },
-    { name: 'React' },
-    { name: 'Angular' }
-  ];
+const tabs = [
+  { name: 'Vue' },
+  { name: 'Svelte' },
+  { name: 'React' },
+  { name: 'Angular' }
+];
 
-  const panels = [
-    { content: 'Vue is a progressive framework for building user interfaces.' },
-    { content: 'Svelte is a radical new approach to building user interfaces.' },
-    { content: 'React is a JavaScript library for building user interfaces.' },
-    { content: 'Angular is a platform for building mobile and desktop web applications.' }
-  ];
+const panels = [
+  { content: 'Vue 是一个渐进式框架，用于构建用户界面。' },
+  { content: 'Svelte 是一种新的构建用户界面的方法。' },
+  { content: 'React 是一个构建用户界面的 JavaScript 库。' },
+  { content: 'Angular 是一个用于构建移动和桌面 Web 应用程序的平台。' }
+];
 
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(
-      <Tabs tabs={tabs} panels={panels} />
-    )
+describe('测试组件 Tabs.cy.tsx 是否满足交互要求', () => {
+  it('挂载组件 Tabs 组件到页面中', () => {
+    // 看看: https://on.cypress.io/mounting-react
+    cy.mount(<Tabs tabs={tabs} panels={panels} />)
   })
 
-  it('shows "Vue" content by default', () => {
-    cy.mount(
-      <Tabs tabs={tabs} panels={panels} />
-    );
+  it('默认显示 "Vue" 选项卡', () => {
+    cy.mount(<Tabs tabs={tabs} panels={panels} />);
 
-    // Check if the "Vue" content is displayed by default
-    cy.contains('Vue is a progressive framework for building user interfaces.').should('be.visible');
+    // 检查是否显示了正确的内容
+    cy.contains('Vue 是一个渐进式框架，用于构建用户界面。').should('be.visible');
   });
-  
 
-  it('displays the correct content when a tab is clicked', () => {
-    cy.mount(
-      <Tabs tabs={tabs} panels={panels} />
-    );
+  it('当单击选项卡时显示正确的内容', () => {
+    cy.mount(<Tabs tabs={tabs} panels={panels} />);
 
-    // Click on the 'Svelte' tab
+    // 点击 "Svelte" 选项卡, 检查是否显示了正确的内容
     cy.contains('Svelte').click();
-    // Check if the correct content is displayed
-    cy.contains('Svelte is a radical new approach to building user interfaces.').should('be.visible');
+    cy.contains('Svelte 是一种新的构建用户界面的方法。').should('be.visible');
 
-    // Click on the 'React' tab
+    // 点击 "React" 选项卡, 检查是否显示了正确的内容
     cy.contains('React').click();
-    // Check if the correct content is displayed
-    cy.contains('React is a JavaScript library for building user interfaces.').should('be.visible');
+    cy.contains('React 是一个构建用户界面的 JavaScript 库。').should('be.visible');
 
-    // Click on the 'Angular' tab
+    // 点击 "Angular" 选项卡, 检查是否显示了正确的内容
     cy.contains('Angular').click();
-    // Check if the correct content is displayed
-    cy.contains('Angular is a platform for building mobile and desktop web applications.').should('be.visible');
-    
-    // Click on the 'Vue' tab
-    cy.contains('Vue').click();
-    // Check if the correct content is displayed
-    cy.contains('Vue is a progressive framework for building user interfaces.').should('be.visible');
-    
-  }); 
+    cy.contains('Angular 是一个用于构建移动和桌面 Web 应用程序的平台。').should('be.visible');
 
+    // 点击 "Vue" 选项卡, 检查是否显示了正确的内容
+    cy.contains('Vue').click();
+    cy.contains('Vue 是一个渐进式框架，用于构建用户界面。').should('be.visible');
+  });
 })
