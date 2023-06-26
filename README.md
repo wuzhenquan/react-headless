@@ -5,3 +5,7 @@
 安装 ➡️ `pnpm i`
 
 开发 ➡️ `pnpm run dev`
+
+react-testing-library 测试 ➡️ `pnpm run test`
+
+cypress 测试 ➡️ `pnpx cypress open` 
